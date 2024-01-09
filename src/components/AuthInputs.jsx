@@ -1,6 +1,17 @@
 import { useState } from "react";
 import { styled } from "styled-components";
 
+const StyledButton = styled.button`
+  padding: 1rem 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 0.25rem;
+  color: #1f2937;
+  background-color: #f0b322;
+  border-radius: 6px;
+  border: none;
+`;
+
 const ControlContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -24,7 +35,7 @@ const Input = styled.input`
   width: 100%;
   padding: 0.75rem 1rem;
   line-height: 1.5;
-  background-color: ${({ invalid }) => (invalid ? "#fed2d2" : "#d1d5db")};
+  background-color: ${({ $invalid }) => ($invalid ? "#fed2d2" : "#d1d5db")};
   color: #374151;
   border: 1px solid transparent;
   border-radius: 0.25rem;
@@ -55,10 +66,10 @@ export default function AuthInputs() {
     <div id="auth-inputs">
       <ControlContainer>
         <p>
-          <Label invalid={emailNotValid}>Email</Label>
+          <Label $invalid={emailNotValid}>Email</Label>
           <Input
             type="email"
-            invalid={emailNotValid}
+            $invalid={emailNotValid}
             onChange={(event) => handleInputChange("email", event.target.value)}
           />
         </p>
